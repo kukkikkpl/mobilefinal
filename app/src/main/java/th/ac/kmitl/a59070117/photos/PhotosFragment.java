@@ -38,7 +38,7 @@ public class PhotosFragment extends Fragment {
         bundle = getArguments();
         if (bundle != null) {
             albumsId = bundle.getString("friendId");
-            link = "https://jsonplaceholder.typicode.com/users/" + albumsId + "/photoss";
+            link = "https://jsonplaceholder.typicode.com/users/" + albumsId + "/photos";
         }
     }
 
@@ -61,7 +61,7 @@ public class PhotosFragment extends Fragment {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.e("TODO", e.getMessage());
+                Log.e("PHOTOS", e.getMessage());
             }
 
             @Override

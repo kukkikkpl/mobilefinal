@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import th.ac.kmitl.a59070117.albums.AlbumsFragment;
+import th.ac.kmitl.a59070117.friend.FriendFragment;
 import th.ac.kmitl.a59070117.post.PostFragment;
 import th.ac.kmitl.a59070117.todo.TodoFragment;
 
@@ -81,6 +82,18 @@ public class MyFriendFragment extends Fragment {
                         .addToBackStack(null)
                         .commit();
 
+            }
+        });
+
+        Button backBtn = (Button) getView().findViewById(R.id.my_friend_back_btn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_view, new FriendFragment())
+                        .commit();
             }
         });
     }
