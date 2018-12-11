@@ -21,6 +21,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        initLoginBtn();
     }
 
     @Nullable
@@ -41,7 +42,7 @@ public class LoginFragment extends Fragment {
                 if (userIdStr.isEmpty() || passwordStr.isEmpty()) {
                     Toast.makeText(
                             getActivity(),
-                            "กรุณาระบุ User หรือ Password",
+                            "Please fill out this form",
                             Toast.LENGTH_SHORT
                     ).show();
                     Log.d("USER", "USER OR PASSWORD IS EMPTY");
@@ -71,7 +72,11 @@ public class LoginFragment extends Fragment {
     private void logIn(String id, String password) {
         SharedPreferences setting = getContext().getSharedPreferences("Pref", 0);
         if (setting.getString("id", null) != null) {
-
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.main_view, new HomeFragment())
+                    .addToBackStack(null).commit();
         } else {
             if (helper.checkUser(id, password)) {
                 User user = helper.getUser(id);
@@ -79,6 +84,16 @@ public class LoginFragment extends Fragment {
                 editor.putString("id", id);
                 editor.putString("name", user.getName());
                 editor.commit();
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_view, new HomeFragment())
+                        .addToBackStack(null).commit();
+            } else {
+                Toast.makeText(
+                        getActivity(),
+                        "Invalid user or password",
+                        Toast.LENGTH_SHORT).show();
             }
         }
 

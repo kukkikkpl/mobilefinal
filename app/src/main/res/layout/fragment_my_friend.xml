@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/my_friend_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/my_friend_todos_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="todos" />
+
+    <Button
+        android:id="@+id/my_friend_post_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="post" />
+
+    <Button
+        android:id="@+id/my_friend_albums_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="albums" />
+
+    <Button
+        android:id="@+id/my_friend_back_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="back" />
+
+</LinearLayout>

@@ -61,4 +61,15 @@ public class DBHelper extends SQLiteOpenHelper {
         user.setPassword(cursor.getString(3));
         return user;
     }
+
+    public void updateUser(User user) {
+        sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id", user.getId());
+        values.put("name", user.getName());
+        values.put("age", user.getAge());
+        values.put("password", user.getPassword());
+        sqLiteDatabase.update("user", values, "id = ? ", new String[]{user.getId()});
+        sqLiteDatabase.close();
+    }
 }

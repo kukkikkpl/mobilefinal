@@ -53,6 +53,11 @@ public class RegisterFragment extends Fragment {
                 ageInt >= 10 && ageInt <= 80 && passwordStr.length() >= 6) {
             User user = new User(idStr, nameStr, ageInt, passwordStr);
             helper.addUser(user);
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.main_view, new LoginFragment())
+                    .addToBackStack(null).commit();
         } else {
             Toast.makeText(getActivity(), "ข้อมูลไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
         }
